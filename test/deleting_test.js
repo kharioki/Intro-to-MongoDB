@@ -1,7 +1,7 @@
 const assert = require('assert');
 const MarioChar = require('../models/mariochar');
 
-describe('finding records', () => {
+describe('deleting records', () => {
 
     var char;
     beforeEach((done) => {
@@ -10,7 +10,6 @@ describe('finding records', () => {
         });
     
         char.save().then(() => {
-            assert(char.isNew === false);
             done();
         });
     })
