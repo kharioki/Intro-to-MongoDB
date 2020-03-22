@@ -6,7 +6,8 @@ describe('updating records', () => {
     var char;
     beforeEach((done) => {
         char = new MarioChar({
-            name: 'Mario'
+            name: 'Mario',
+            weight: 50
         });
     
         char.save().then(() => {
@@ -21,6 +22,15 @@ describe('updating records', () => {
             done();
         });
     });
+  });
+
+  it('should increment weight record by 1 in the database', (done) => {
+    MarioChar.updateMany({}, { $inc: { weight: 1 } }).then(() => {
+        MarioChar.findOne({ name: 'Mario' }).then((record) => {
+            assert(record.weight === 51);
+            done();
+        });
+      });
   });
 
 });
