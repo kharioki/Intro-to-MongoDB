@@ -3,8 +3,9 @@ const MarioChar = require('../models/mariochar');
 
 describe('finding records', () => {
 
+    var char;
     beforeEach((done) => {
-        var char = new MarioChar({
+        char = new MarioChar({
             name: 'Mario'
         });
     
@@ -20,4 +21,11 @@ describe('finding records', () => {
         done();
     })
   });
-})
+
+  it('should find a record by ID from the database', (done) => {
+    MarioChar.findOne({ _id: char._id }).then(result => {
+        assert(result._id.toString() === char._id.toString());
+        done();
+    })
+  });
+});
