@@ -10,7 +10,6 @@ describe('finding records', () => {
         });
     
         char.save().then(() => {
-            assert(char.isNew === false);
             done();
         });
     })
